@@ -52,5 +52,6 @@ deploybuild:
     - npm run build
     - ls 
     - scp -r "$CI_PROJECT_NAME" root@$deploy_server:/home/chen/sl/srs/html/ddmb/
+    - ssh root@$deploy_server docker restart srs_nginx_1
   tags:
     - vue

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2019-12-14 15:22:42
- * @LastEditTime : 2019-12-18 17:51:03
+ * @LastEditTime : 2020-01-03 11:45:13
  * @LastEditors  : Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \tiger-prawn\tiger-prawn-mbfw\src\App.vue
@@ -84,15 +84,10 @@ export default {
 
 
     // TODO 路由跳转
-    // window.onpopstate = () => {
-    //     console.log(history.state)
-    //     history.pushState(
-    //       {},
-    //       "",
-    //       `?dd_nav_bgcolor=FF5E97F6`
-    //     );
+    window.onpopstate = () => {
+        console.log("jump")
 
-    // };
+    };
     
     this.asideMenuConfig = await asideMenuConfig();
     if (dd.env.version) {

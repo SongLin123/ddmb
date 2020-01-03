@@ -1,0 +1,56 @@
+image: node:12
+# 定义 stages
+stages:
+  - testbuild
+  - deploybuild
+cache:
+  paths:
+    - node_modules/
+# 定义 job
+testbuild:
+  stage: testbuild
+  only:
+    - master
+  script:
+    - echo "$test_SSH_PRIVATE_KEY"
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$test_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $test_server >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - '[[ -f /.dockerinit ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - node -v
+    - npm install -g cnpm --registry=https://registry.npm.taobao.org
+    - cnpm -v
+    - cnpm install
+    - npm run build
+    - ls 
+    - scp -r "$CI_PROJECT_NAME" root@$test_server:/home/lxz/sl/deploy/ddmb/
+  tags:
+    - vue
+# 定义 job
+deploybuild:
+  stage: deploybuild
+  only:
+    - deploy
+  script:
+    - echo "$deploy_SSH_PRIVATE_KEY"
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$deploy_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $deploy_server >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+    - '[[ -f /.dockerinit ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - node -v
+    - npm install -g cnpm --registry=https://registry.npm.taobao.org
+    - cnpm -v
+    - cnpm install
+    - npm run build
+    - ls 
+    - scp -r "$CI_PROJECT_NAME" root@$deploy_server:/home/chen/sl/srs/html/ddmb/
+  tags:
+    - vue

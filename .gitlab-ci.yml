@@ -27,7 +27,7 @@ testbuild:
     - cnpm install
     - npm run build
     - ls 
-    - scp -r "$CI_PROJECT_NAME" root@$test_server:/home/lxz/sl/deploy/ddmb/
+    - ssh root@$test_server rm -rf /home/lxz/sl/deploy/$CI_PROJECT_NAME && scp -r "$CI_PROJECT_NAME" root@$test_server:/home/lxz/sl/deploy/$CI_PROJECT_NAME
   tags:
     - vue
 # 定义 job
@@ -51,6 +51,6 @@ deploybuild:
     - cnpm install
     - npm run build
     - ls 
-    - scp -r "$CI_PROJECT_NAME" root@$deploy_server:/home/chen/sl/srs/html/ddmb/
+    - ssh root@$deploy_server rm -rf /home/chen/sl/srs/html/$CI_PROJECT_NAME && scp -r "$CI_PROJECT_NAME" root@$deploy_server:/home/chen/sl/srs/html/$CI_PROJECT_NAME
   tags:
     - vue

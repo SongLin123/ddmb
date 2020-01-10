@@ -20,9 +20,9 @@
             "groupId":2
         },
         {
-            "appPath": "/tiger-prawn-mbhand/?dd_nav_bgcolor=FF5E97F6",
+            "appPath": "/m-tigerprawn-hand/?dd_nav_bgcolor=FF5E97F6",
             "name": "一键轮巡",
-            "appName":"tiger-prawn-mbhand",
+            "appName":"m-tigerprawn-hand",
             "icon": "camera_alt",
             "groupId":3
         },
@@ -30,9 +30,9 @@
             "appPath": "/m-tigerprawn-dingmsg/?dd_nav_bgcolor=FF5E97F6",
             "name": "应急响应",
             "appName":"m-tigerprawn-dingmsg",
-            "icon": "camera_alt",
+            "icon": "directions_run",
             "groupId":4
-        },
+        }
     ],
     "group":[
         {

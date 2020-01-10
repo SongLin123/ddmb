@@ -9,12 +9,13 @@
     ]
   },
   "rules": {
+    "forin":false,
     "no-console":false,
     "indent": [true, "spaces", 2],
     "interface-name": false,
     "no-consecutive-blank-lines": false,
     "object-literal-sort-keys": false,
     "ordered-imports": false,
-    "quotemark": [true, "single"]
+    "quotemark": false
   }
 }

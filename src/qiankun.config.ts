@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2019-12-16 16:17:31
- * @LastEditTime : 2019-12-18 17:43:44
+ * @LastEditTime : 2020-01-08 16:30:27
  * @LastEditors  : Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \tiger-prawn-mbfw\src\qiankun.config.ts
@@ -10,11 +10,11 @@ import router from './config/routes';
 import store from './store';
 import { asideMenuConfig } from "./config/menu";
 
-import './styles/quasar.styl'
-import '@quasar/extras/material-icons/material-icons.css'
-import '@quasar/extras/material-icons-outlined/material-icons-outlined.css'
-import '@quasar/extras/material-icons-round/material-icons-round.css'
-import '@quasar/extras/material-icons-sharp/material-icons-sharp.css'
+import './styles/quasar.styl';
+import '@quasar/extras/material-icons/material-icons.css';
+import '@quasar/extras/material-icons-outlined/material-icons-outlined.css';
+import '@quasar/extras/material-icons-round/material-icons-round.css';
+import '@quasar/extras/material-icons-sharp/material-icons-sharp.css';
 
 
 // 以下为qiankun框架配置

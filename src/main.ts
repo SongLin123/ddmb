@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2019-12-14 15:22:42
- * @LastEditTime : 2020-01-15 14:03:37
+ * @LastEditTime : 2020-01-15 14:08:59
  * @LastEditors  : Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \tiger-prawn\tiger-prawn-mbfw\src\main.ts
@@ -59,8 +59,8 @@ if (dd.env.version) {
     // dd.ready参数为回调函数，在环境准备就绪时触发，jsapi的调用需要保证在该回调函数触发后调用，否则无效。
     const code: string = await new Promise((res) => {
       (dd.runtime.permission as any).requestAuthCode({
-        corpId: "ding38a65ac3e948dd2135c2f4657eb6378f",
-        // corpId: "ding2160d2bbcf06b61d4ac5d6980864d335",
+        // corpId: "ding38a65ac3e948dd2135c2f4657eb6378f",
+        corpId: "ding2160d2bbcf06b61d4ac5d6980864d335",
         onSuccess(result: any) {
           res(result.code);
         },

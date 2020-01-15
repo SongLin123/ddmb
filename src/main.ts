@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2019-12-14 15:22:42
- * @LastEditTime : 2020-01-10 21:52:28
+ * @LastEditTime : 2020-01-15 14:08:59
  * @LastEditors  : Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \tiger-prawn\tiger-prawn-mbfw\src\main.ts
@@ -13,8 +13,12 @@ import * as dd from 'dingtalk-jsapi';
 import { initQasar } from './quasar';
 import { Notify } from 'quasar';
 
+
+const Emun = new Map([["m-tigerprawn-special", "safetycontrol"], ["m-tigerprawn-dingmsg", "emergency"]]);
+
 import Axios from "axios";
-const userLogin = (params: any) => Axios.get(`/security/checkLogin/${params}`).then((res) => res.data);
+const userLogin = (code: string, moduleName: string) => Axios.get(`/security/checkLogin/${code}/${moduleName}`)
+  .then((res) => res.data);
 const getSign = (params: any) => Axios.request({
   method: "post",
   url: "/security/getJsapiTicket",
@@ -53,7 +57,7 @@ Vue.mixin({
 if (dd.env.version) {
   dd.ready(async () => {
     // dd.ready参数为回调函数，在环境准备就绪时触发，jsapi的调用需要保证在该回调函数触发后调用，否则无效。
-    const code = await new Promise((res) => {
+    const code: string = await new Promise((res) => {
       (dd.runtime.permission as any).requestAuthCode({
         // corpId: "ding38a65ac3e948dd2135c2f4657eb6378f",
         corpId: "ding2160d2bbcf06b61d4ac5d6980864d335",
@@ -66,9 +70,12 @@ if (dd.env.version) {
     let msg: any;
     let signmsg: any;
     try {
-      msg = await userLogin(code);
+      msg = await userLogin(code, Emun.get(location.pathname.split("/")[1])!);
 
-      signmsg = await getSign({ signedUrl: location.href.split("#")[0] });
+      signmsg = await getSign({
+        signedUrl: location.href.split("#")[0],
+        appName: Emun.get(location.pathname.split("/")[1])!,
+      });
     } catch (error) {
       Notify.create(error.toString());
     }
@@ -99,6 +106,13 @@ if (dd.env.version) {
           'biz.cspace.chooseSpaceDir',
           'biz.util.uploadAttachment',
           'biz.util.openLink',
+          "biz.map.locate",
+          "biz.map.search",
+          "device.geolocation.get",
+          "biz.map.view",
+          "device.geolocation.start",
+          "device.geolocation.stop",
+          "device.geolocation.status",
         ], // 必填，需要使用的jsapi列表，注意：不要带dd。
       });
       Object.assign(window, {

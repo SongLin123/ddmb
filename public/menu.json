@@ -6,28 +6,28 @@
             "icon": "school"
         },
         {
-            "appPath": "/tiger-prawn-mbcs/?dd_nav_bgcolor=FF5E97F6",
+            "appPath": "/tiger-prawn-mbcs/",
             "name": "国家安全",
             "appName":"tiger-prawn-mbcs",
             "icon": "security",
             "groupId":1
         },
         {
-            "appPath": "/tiger-prawn-mbspecial/?dd_nav_bgcolor=FF5E97F6",
+            "appPath": "/m-tigerprawn-special/",
             "name": "安全监察",
-            "appName":"tiger-prawn-mbspecial",
+            "appName":"m-tigerprawn-special",
             "icon": "security",
             "groupId":2
         },
         {
-            "appPath": "/m-tigerprawn-hand/?dd_nav_bgcolor=FF5E97F6",
+            "appPath": "/m-tigerprawn-hand/",
             "name": "一键轮巡",
             "appName":"m-tigerprawn-hand",
             "icon": "camera_alt",
             "groupId":3
         },
         {
-            "appPath": "/m-tigerprawn-dingmsg/?dd_nav_bgcolor=FF5E97F6",
+            "appPath": "/m-tigerprawn-dingmsg/",
             "name": "应急响应",
             "appName":"m-tigerprawn-dingmsg",
             "icon": "directions_run",

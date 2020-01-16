@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2019-12-14 15:22:42
- * @LastEditTime : 2020-01-08 09:27:59
+ * @LastEditTime : 2020-01-16 11:30:09
  * @LastEditors  : Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \tiger-prawn\tiger-prawn-mbfw\src\App.vue
@@ -95,20 +95,20 @@ export default {
         // dd.ready参数为回调函数，在环境准备就绪时触发，jsapi的调用需要保证在该回调函数触发后调用，否则无效。
         // dd.biz.navigation.setTitle({ title: "首页" });
 
-        dd.biz.navigation.setMenu({
-          backgroundColor: "#ADD8E6",
-          textColor: "#ADD8E611",
-          items: [
-            {
-              id: "1",
-              iconId: "more",
-              text: "首页"
-            }
-          ],
-          onSuccess() {
-            that.DrawerOpen = !that.DrawerOpen;
-          }
-        });
+        // dd.biz.navigation.setMenu({
+        //   backgroundColor: "#ADD8E6",
+        //   textColor: "#ADD8E611",
+        //   items: [
+        //     {
+        //       id: "1",
+        //       iconId: "more",
+        //       text: "首页"
+        //     }
+        //   ],
+        //   onSuccess() {
+        //     that.DrawerOpen = !that.DrawerOpen;
+        //   }
+        // });
       });
     }
   },

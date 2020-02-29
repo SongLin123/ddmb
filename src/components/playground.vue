@@ -67,6 +67,11 @@ export default {
     const menuConfig = await asideMenuConfig();
     this.asideMenu = menuConfig.menu;
     this.group = menuConfig.group;
+  },
+  methods:{
+    // goto(data,res){
+    //   console.log(data,res)
+    // }
   }
 };
 </script>

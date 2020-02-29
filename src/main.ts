@@ -59,18 +59,18 @@ if (dd.env.version) {
     // dd.ready参数为回调函数，在环境准备就绪时触发，jsapi的调用需要保证在该回调函数触发后调用，否则无效。
     const code: string = await new Promise((res) => {
       (dd.runtime.permission as any).requestAuthCode({
-        // corpId: "ding38a65ac3e948dd2135c2f4657eb6378f",
-        corpId: "ding2160d2bbcf06b61d4ac5d6980864d335",
+        corpId: "ding38a65ac3e948dd2135c2f4657eb6378f",
+        // corpId: "ding2160d2bbcf06b61d4ac5d6980864d335",
         onSuccess(result: any) {
           res(result.code);
         },
       });
     });
-
+    console.log(code );
     let msg: any;
     let signmsg: any;
     try {
-      msg = await userLogin(code, Emun.get(location.pathname.split("/")[1])!);
+      msg = await userLogin(code, Emun.get(location.pathname.split("/")[1])!); // location.pathname.split("/")[1])!
 
       signmsg = await getSign({
         signedUrl: location.href.split("#")[0],
@@ -79,8 +79,6 @@ if (dd.env.version) {
     } catch (error) {
       Notify.create(error.toString());
     }
-
-
 
     if (signmsg.statusCode === 200) {
       // jsapi 鉴权
@@ -115,6 +113,7 @@ if (dd.env.version) {
           "device.geolocation.status",
         ], // 必填，需要使用的jsapi列表，注意：不要带dd。
       });
+
       Object.assign(window, {
         ddconfig: {
           user: msg.data as {
@@ -126,11 +125,12 @@ if (dd.env.version) {
           corpId: signmsg.data.corpId,
         },
       });
+      // console.log((window as any).ddconfig)
       init(Vue, App, initQasar);
     } else {
       alert("鉴权失败");
     }
-
+    console.log((window as any).ddconfig);
   });
 } else {
   init(Vue, App, initQasar);

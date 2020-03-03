@@ -1,12 +1,16 @@
 <!--
  * @Author: your name
  * @Date: 2019-12-14 15:23:21
- * @LastEditTime: 2020-01-02 17:57:52
- * @LastEditors: your name
+ * @LastEditTime: 2020-03-03 19:08:46
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \tiger-prawn-mbfw\README.md
  -->
-# ddmb
+# 微应用主框架
+
+原有工作项目的钉钉微应用主应用，包含微应用和钉钉鉴权的部分
+
+微应用的设计思路在[这里](./microfronted.md)
 
 ## Project setup
 ```
